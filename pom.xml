@@ -10,6 +10,11 @@
     <packaging>pom</packaging>
     <modules>
         <module>yunxiang-base</module>
+        <module>yunxiang-common</module>
+        <module>yunxiang-biz</module>
+        <module>yunxiang-web</module>
+        <module>yunxiang-dal</module>
+        <module>yunxiang-service</module>
     </modules>
 
     <properties>
@@ -18,4 +23,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+<!--            <dependency>-->
+<!--                <groupId></groupId>-->
+<!--                <artifactId></artifactId>-->
+<!--            </dependency>-->
+        </dependencies>
+    </dependencyManagement>
 </project>

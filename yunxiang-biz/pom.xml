@@ -7,14 +7,13 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>yunxiang-base</artifactId>
+    <artifactId>yunxiang-biz</artifactId>
     <packaging>jar</packaging>
 
-    <name>yunxiang-base</name>
+    <name>yunxiang-biz</name>
     <url>http://maven.apache.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
 </project>
