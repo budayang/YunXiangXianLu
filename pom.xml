@@ -30,6 +30,41 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.yunxiangxianlu</groupId>
+                <artifactId>yunxiang-dal</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.yunxiangxianlu</groupId>
+                <artifactId>yunxiang-base</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.yunxiangxianlu</groupId>
+                <artifactId>yunxiang-biz</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.yunxiangxianlu</groupId>
+                <artifactId>yunxiang-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.yunxiangxianlu</groupId>
+                <artifactId>yunxiang-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.yunxiangxianlu</groupId>
+                <artifactId>yunxiang-start</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.yunxiangxianlu</groupId>
+                <artifactId>yunxiang-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <!-- Spring Boot 依赖管理 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
