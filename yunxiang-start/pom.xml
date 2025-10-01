@@ -14,6 +14,10 @@
         <finalName>yunxiang-start</finalName>
     </build>
     <dependencies>
+        <dependency>
+            <groupId>org.yunxiangxianlu</groupId>
+            <artifactId>yunxiang-common</artifactId>
+        </dependency>
         <!-- Spring Boot Starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

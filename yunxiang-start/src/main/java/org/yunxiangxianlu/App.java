@@ -1,4 +1,4 @@
-package org.yunxiangxianlu.start;
+package org.yunxiangxianlu;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

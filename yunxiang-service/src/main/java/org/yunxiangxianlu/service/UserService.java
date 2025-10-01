@@ -1,6 +1,12 @@
 package org.yunxiangxianlu.service;
 
+import org.yunxiangxianlu.dal.entity.UserDO;
+
 public interface UserService {
 
-    void login();
+    Boolean existsByUsername(String username);
+
+    void saveUser(UserDO  user);
+
+    UserDO findByUsername(String username);
 }

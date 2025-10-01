@@ -1,5 +1,11 @@
 package org.yunxiangxianlu.dal.entity;
 
+import lombok.*;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserDO {
 
     /**
@@ -16,6 +22,21 @@ public class UserDO {
      * 密码
      */
     private String password;
+
+    /**
+     * 邮箱
+     */
+    private String email;
+
+    /**
+     * 手机号
+     */
+    private String phone;
+
+    /**
+     * 状态
+     */
+    private Integer status;
 
     /**
      * 创建时间

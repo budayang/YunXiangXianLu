@@ -26,6 +26,8 @@
         <mybatis.plus.version>3.5.2</mybatis.plus.version>
         <druid.version>1.2.20</druid.version>
         <mysql.connector.version>8.0.29</mysql.connector.version>
+        <lombok.version>1.18.24</lombok.version>
+        <jwt.version>0.9.1</jwt.version>
     </properties>
 
     <dependencyManagement>
@@ -93,6 +95,20 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.connector.version}</version> <!-- 添加版本号，使用最新稳定版 -->
                 <scope>runtime</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version> <!-- 使用最新版本 -->
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- JWT -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jwt.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

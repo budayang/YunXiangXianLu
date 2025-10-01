@@ -18,12 +18,20 @@
     </properties>
     <dependencies>
         <dependency>
+            <groupId>org.yunxiangxianlu</groupId>
+            <artifactId>yunxiang-common</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.yunxiangxianlu</groupId>
             <artifactId>yunxiang-biz</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
         </dependency>
     </dependencies>
 

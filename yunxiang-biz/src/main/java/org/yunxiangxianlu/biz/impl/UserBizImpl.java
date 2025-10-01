@@ -3,6 +3,7 @@ package org.yunxiangxianlu.biz.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.yunxiangxianlu.biz.UserBiz;
+import org.yunxiangxianlu.dal.entity.UserDO;
 import org.yunxiangxianlu.service.UserService;
 
 @Service
@@ -12,7 +13,17 @@ public class UserBizImpl implements UserBiz {
     private UserService userService;
 
     @Override
-    public void login() {
-        userService.login();
+    public Boolean existsByUsername(String username) {
+        return userService.existsByUsername(username);
+    }
+
+    @Override
+    public void save(String username, String password) {
+        userService.saveUser(UserDO.builder().username(username).password(password).build());
+    }
+
+    @Override
+    public UserDO findByUsername(String username) {
+        return userService.findByUsername(username);
     }
 }

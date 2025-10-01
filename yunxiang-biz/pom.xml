@@ -19,6 +19,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.yunxiangxianlu</groupId>
+            <artifactId>yunxiang-common</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
         </dependency>
