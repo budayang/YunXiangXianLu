@@ -16,6 +16,10 @@
     <dependencies>
         <dependency>
             <groupId>org.yunxiangxianlu</groupId>
+            <artifactId>yunxiang-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.yunxiangxianlu</groupId>
             <artifactId>yunxiang-common</artifactId>
         </dependency>
         <!-- Spring Boot Starter -->

@@ -1,16 +1,21 @@
 package org.yunxiangxianlu.dal.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@TableName("sys_user")
 public class UserDO {
 
     /**
      * id
      */
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**

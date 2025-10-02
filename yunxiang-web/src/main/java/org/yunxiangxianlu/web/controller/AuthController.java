@@ -16,7 +16,7 @@ import org.yunxiangxianlu.dal.entity.UserDO;
 import java.util.HashMap;
 import java.util.Map;
 
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 @RestController
 public class AuthController {
 
@@ -56,7 +56,7 @@ public class AuthController {
         // 查找用户
         UserDO user = userBiz.findByUsername(username);
         if (user == null) {
-            return Result.error("用户名或密码错误");
+            return Result.error("用户未注册");
         }
 
         // 验证密码
