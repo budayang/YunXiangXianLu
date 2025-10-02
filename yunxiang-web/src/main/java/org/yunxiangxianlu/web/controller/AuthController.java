@@ -10,11 +10,14 @@ import org.yunxiangxianlu.biz.UserBiz;
 import org.yunxiangxianlu.common.dto.req.LoginReq;
 import org.yunxiangxianlu.common.dto.req.RegisterReq;
 import org.yunxiangxianlu.common.dto.res.Result;
+import org.yunxiangxianlu.common.exception.BusinessException;
 import org.yunxiangxianlu.common.util.JwtUtils;
 import org.yunxiangxianlu.dal.entity.UserDO;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static org.yunxiangxianlu.common.exception.ErrorCode.*;
 
 @RequestMapping("/auth")
 @RestController
@@ -36,7 +39,7 @@ public class AuthController {
     public Result<String> register(@RequestBody RegisterReq req) {
         // 检查用户名是否已存在
         if (userBiz.existsByUsername(req.getUsername())) {
-            return Result.error(500, "用户名已存在");
+            throw new BusinessException(USER_ALREADY_EXISTS);
         }
         // 密码加密
         req.setPassword(passwordEncoder.encode(req.getPassword()));
@@ -56,17 +59,17 @@ public class AuthController {
         // 查找用户
         UserDO user = userBiz.findByUsername(username);
         if (user == null) {
-            return Result.error("用户未注册");
+            throw new BusinessException(USER_NOT_REGISTERED);
         }
 
         // 验证密码
         if (!passwordEncoder.matches(password, user.getPassword())) {
-            return Result.error("用户名或密码错误");
+            throw new BusinessException(USERNAME_OR_PASSWORD_ERROR);
         }
 
         // 检查用户是否启用
         if (user.getStatus() == 1) {
-            return Result.error("账号已被禁用");
+            throw new BusinessException(USER_DISABLED);
         }
 
         // 生成令牌
@@ -90,7 +93,7 @@ public class AuthController {
         String refreshToken = refreshData.get("refreshToken");
 
         if (refreshToken == null || !jwtUtils.validateToken(refreshToken)) {
-            return Result.error(401, "刷新令牌无效");
+            throw new BusinessException(INVALID_REFRESH_TOKEN);
         }
 
         // 从刷新令牌中获取用户名

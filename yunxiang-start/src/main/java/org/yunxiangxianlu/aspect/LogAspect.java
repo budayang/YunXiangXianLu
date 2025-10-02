@@ -94,8 +94,6 @@ public class LogAspect {
         logger.error("【请求异常】==========================================", error);
         logger.error("异常信息: {}", error.getMessage());
         logger.error("【异常结束】==========================================\n");
-        // 清除MDC中的traceId
-        MDC.remove(TRACE_ID);
     }
 
     /**
