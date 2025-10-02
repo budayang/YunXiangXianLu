@@ -16,11 +16,11 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         // 注册认证拦截器
         registry.addInterceptor(authInterceptor)
-                .addPathPatterns("/api/**") // 拦截所有API请求
+                .addPathPatterns("/**") // 拦截所有API请求
                 .excludePathPatterns( // 排除不需要认证的路径
-                        "/api/auth/login",
-                        "/api/auth/register",
-                        "/api/auth/refresh"
+                        "/auth/login",
+                        "/auth/register",
+                        "/auth/refresh"
                 );
     }
 }
