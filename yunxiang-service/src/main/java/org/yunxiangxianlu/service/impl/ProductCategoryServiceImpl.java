@@ -15,4 +15,19 @@ public class ProductCategoryServiceImpl extends ServiceImpl<ProductCategoryDAO, 
     public List<ProductCategoryDO> productCategoryList() {
         return this.list();
     }
+
+    @Override
+    public void addProductCategory(ProductCategoryDO productCategoryDO) {
+        this.save(productCategoryDO);
+    }
+
+    @Override
+    public void updateProductCategory(ProductCategoryDO productCategoryDO) {
+        this.updateById(productCategoryDO);
+    }
+
+    @Override
+    public void deleteProductCategory(Long id) {
+        this.removeById(id);
+    }
 }

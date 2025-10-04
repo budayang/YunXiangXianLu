@@ -7,4 +7,10 @@ import java.util.List;
 public interface ProductCategoryService {
 
     List<ProductCategoryDO> productCategoryList();
+
+    void addProductCategory(ProductCategoryDO productCategoryDO);
+
+    void updateProductCategory(ProductCategoryDO productCategoryDO);
+
+    void deleteProductCategory(Long id);
 }

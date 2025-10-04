@@ -3,7 +3,10 @@ package org.yunxiangxianlu.dal.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -13,6 +16,9 @@ import java.io.Serializable;
  * 用于与数据库表进行数据交互
  */
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @TableName("product_category")
 public class ProductCategoryDO implements Serializable {
     private static final long serialVersionUID = 1L;

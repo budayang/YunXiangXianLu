@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.yunxiangxianlu.biz.ProductCategoryBiz;
+import org.yunxiangxianlu.common.dto.req.productCategory.ProductCategoryAddReqDTO;
+import org.yunxiangxianlu.common.dto.req.productCategory.ProductCategoryDeleteReqDTO;
+import org.yunxiangxianlu.common.dto.req.productCategory.ProductCategoryUpdateReqDTO;
 import org.yunxiangxianlu.common.dto.res.ProductCategoryVO;
 import org.yunxiangxianlu.dal.entity.ProductCategoryDO;
 import org.yunxiangxianlu.service.ProductCategoryService;
@@ -33,5 +36,31 @@ public class ProductCategoryBizImpl implements ProductCategoryBiz {
             productCategoryVOS.add(productCategoryVO);
         }
         return productCategoryVOS;
+    }
+
+    @Override
+    public void add(ProductCategoryAddReqDTO reqDTO) {
+        ProductCategoryDO productCategoryDO = ProductCategoryDO.builder()
+                .categoryName(reqDTO.getCategoryName())
+                .sortOrder(reqDTO.getSortOrder())
+                .imageUrl(reqDTO.getImageUrl())
+                .build();
+        productCategoryService.addProductCategory(productCategoryDO);
+    }
+
+    @Override
+    public void update(ProductCategoryUpdateReqDTO reqDTO) {
+        ProductCategoryDO productCategoryDO = ProductCategoryDO.builder()
+                .id(reqDTO.getId())
+                .categoryName(reqDTO.getCategoryName())
+                .sortOrder(reqDTO.getSortOrder())
+                .imageUrl(reqDTO.getImageUrl())
+                .build();
+        productCategoryService.updateProductCategory(productCategoryDO);
+    }
+
+    @Override
+    public void delete(ProductCategoryDeleteReqDTO reqDTO) {
+        productCategoryService.deleteProductCategory(reqDTO.getId());
     }
 }
