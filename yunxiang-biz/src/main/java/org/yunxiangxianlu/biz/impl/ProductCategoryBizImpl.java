@@ -58,16 +58,12 @@ public class ProductCategoryBizImpl implements ProductCategoryBiz {
     public void update(ProductCategoryUpdateReqDTO reqDTO) {
         ProductCategoryDO productCategoryDO = ProductCategoryDO.builder()
                 .id(reqDTO.getId())
+                .categoryName(reqDTO.getCategoryName())
+                .sortOrder(reqDTO.getSortOrder())
+                .imageUrl(reqDTO.getImageUrl())
+                .updated(DateUtils.getCurrentTimestamp())
+                .updater(1L)
                 .build();
-        if (StringUtils.hasText(reqDTO.getCategoryName())) {
-            productCategoryDO.setCategoryName(reqDTO.getCategoryName());
-        }
-        if (reqDTO.getSortOrder() != null) {
-            productCategoryDO.setSortOrder(reqDTO.getSortOrder());
-        }
-        if (StringUtils.hasText(reqDTO.getImageUrl())) {
-            productCategoryDO.setImageUrl(reqDTO.getImageUrl());
-        }
         productCategoryService.updateProductCategory(productCategoryDO);
     }
 

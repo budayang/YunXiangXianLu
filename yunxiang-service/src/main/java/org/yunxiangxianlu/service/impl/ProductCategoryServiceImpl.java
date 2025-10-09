@@ -1,7 +1,9 @@
 package org.yunxiangxianlu.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.yunxiangxianlu.dal.dao.ProductCategoryDAO;
 import org.yunxiangxianlu.dal.entity.ProductCategoryDO;
 import org.yunxiangxianlu.service.ProductCategoryService;
@@ -23,7 +25,20 @@ public class ProductCategoryServiceImpl extends ServiceImpl<ProductCategoryDAO, 
 
     @Override
     public void updateProductCategory(ProductCategoryDO productCategoryDO) {
-        this.updateById(productCategoryDO);
+        UpdateWrapper<ProductCategoryDO> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("id", productCategoryDO.getId());
+        if (StringUtils.hasText(productCategoryDO.getCategoryName())) {
+            updateWrapper.set("category_name", productCategoryDO.getCategoryName());
+        }
+        if (productCategoryDO.getSortOrder() != null) {
+            updateWrapper.set("sort_order", productCategoryDO.getSortOrder());
+        }
+        if (StringUtils.hasText(productCategoryDO.getImageUrl())) {
+            updateWrapper.set("image_url", productCategoryDO.getImageUrl());
+        }
+        updateWrapper.set("updated", productCategoryDO.getUpdated());
+        updateWrapper.set("updater", productCategoryDO.getUpdater());
+        this.update(updateWrapper);
     }
 
     @Override
