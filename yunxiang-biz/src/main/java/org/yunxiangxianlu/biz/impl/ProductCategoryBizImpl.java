@@ -3,11 +3,13 @@ package org.yunxiangxianlu.biz.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 import org.yunxiangxianlu.biz.ProductCategoryBiz;
 import org.yunxiangxianlu.common.dto.req.productCategory.ProductCategoryAddReqDTO;
 import org.yunxiangxianlu.common.dto.req.productCategory.ProductCategoryDeleteReqDTO;
 import org.yunxiangxianlu.common.dto.req.productCategory.ProductCategoryUpdateReqDTO;
 import org.yunxiangxianlu.common.dto.res.ProductCategoryVO;
+import org.yunxiangxianlu.common.util.DateUtils;
 import org.yunxiangxianlu.dal.entity.ProductCategoryDO;
 import org.yunxiangxianlu.service.ProductCategoryService;
 
@@ -44,6 +46,10 @@ public class ProductCategoryBizImpl implements ProductCategoryBiz {
                 .categoryName(reqDTO.getCategoryName())
                 .sortOrder(reqDTO.getSortOrder())
                 .imageUrl(reqDTO.getImageUrl())
+                .created(DateUtils.getCurrentTimestamp())
+                .updated(DateUtils.getCurrentTimestamp())
+                .creater(1L)
+                .updater(1L)
                 .build();
         productCategoryService.addProductCategory(productCategoryDO);
     }
@@ -52,10 +58,16 @@ public class ProductCategoryBizImpl implements ProductCategoryBiz {
     public void update(ProductCategoryUpdateReqDTO reqDTO) {
         ProductCategoryDO productCategoryDO = ProductCategoryDO.builder()
                 .id(reqDTO.getId())
-                .categoryName(reqDTO.getCategoryName())
-                .sortOrder(reqDTO.getSortOrder())
-                .imageUrl(reqDTO.getImageUrl())
                 .build();
+        if (StringUtils.hasText(reqDTO.getCategoryName())) {
+            productCategoryDO.setCategoryName(reqDTO.getCategoryName());
+        }
+        if (reqDTO.getSortOrder() != null) {
+            productCategoryDO.setSortOrder(reqDTO.getSortOrder());
+        }
+        if (StringUtils.hasText(reqDTO.getImageUrl())) {
+            productCategoryDO.setImageUrl(reqDTO.getImageUrl());
+        }
         productCategoryService.updateProductCategory(productCategoryDO);
     }
 
