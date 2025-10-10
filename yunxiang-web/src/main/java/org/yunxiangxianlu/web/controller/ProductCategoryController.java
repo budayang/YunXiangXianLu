@@ -11,6 +11,7 @@ import org.yunxiangxianlu.common.dto.req.productCategory.ProductCategoryUpdateRe
 import org.yunxiangxianlu.common.dto.res.ProductCategoryVO;
 import org.yunxiangxianlu.common.dto.res.Result;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RequestMapping("/product-category")
@@ -26,19 +27,19 @@ public class ProductCategoryController {
     }
 
     @RequestMapping("/add")
-    public Result<Void> add(@RequestBody ProductCategoryAddReqDTO reqDTO) {
+    public Result<Void> add(@RequestBody @Valid ProductCategoryAddReqDTO reqDTO) {
         productCategoryBiz.add(reqDTO);
         return Result.success();
     }
 
     @RequestMapping("/update")
-    public Result<Void> update(@RequestBody ProductCategoryUpdateReqDTO reqDTO) {
+    public Result<Void> update(@RequestBody @Valid ProductCategoryUpdateReqDTO reqDTO) {
         productCategoryBiz.update(reqDTO);
         return Result.success();
     }
 
     @RequestMapping("/delete")
-    public Result<Void> delete(@RequestBody ProductCategoryDeleteReqDTO reqDTO) {
+    public Result<Void> delete(@RequestBody @Valid ProductCategoryDeleteReqDTO reqDTO) {
         productCategoryBiz.delete(reqDTO);
         return Result.success();
     }

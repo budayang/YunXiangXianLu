@@ -12,6 +12,11 @@ import lombok.NoArgsConstructor;
 public class ProductCategoryVO {
 
     /**
+     * id
+     */
+    private Long id;
+
+    /**
      * 产品分类名称（如：电子产品、服装）
      */
     private String categoryName;

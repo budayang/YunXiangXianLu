@@ -31,6 +31,7 @@ public class ProductCategoryBizImpl implements ProductCategoryBiz {
         List<ProductCategoryVO> productCategoryVOS = new ArrayList<>();
         for (ProductCategoryDO productCategoryDO : productCategoryDOS) {
             ProductCategoryVO productCategoryVO = ProductCategoryVO.builder()
+                    .id(productCategoryDO.getId())
                     .categoryName(productCategoryDO.getCategoryName())
                     .sortOrder(productCategoryDO.getSortOrder())
                     .imageUrl(productCategoryDO.getImageUrl())
