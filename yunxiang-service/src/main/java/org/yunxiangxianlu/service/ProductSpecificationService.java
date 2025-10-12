@@ -9,4 +9,6 @@ public interface ProductSpecificationService {
     void addProductSpecification(List<ProductSpecificationDO> productSpecificationDOs);
 
     void  updateProductSpecification(ProductSpecificationDO productSpecificationDO);
+
+    void deleteProductSpecification(ProductSpecificationDO productSpecificationDO);
 }

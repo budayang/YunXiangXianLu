@@ -33,7 +33,8 @@ public class ProductInfoController {
     }
 
     @PostMapping("/product-spu/delete")
-    public Result<Void> deleteProductSpu() {
+    public Result<Void> deleteProductSpu(@RequestBody @Valid SpuDeleteReq req) {
+        productInfoBiz.deleteProductSpu(req);
         return Result.success();
     }
 

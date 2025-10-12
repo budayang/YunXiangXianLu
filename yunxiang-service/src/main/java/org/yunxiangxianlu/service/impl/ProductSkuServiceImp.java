@@ -44,4 +44,15 @@ public class ProductSkuServiceImp extends ServiceImpl<ProductSkuDAO, ProductSkuD
         }
         this.update(updateWrapper);
     }
+
+    @Override
+    public void deleteProductSku(ProductSkuDO productSkuDO) {
+        if (productSkuDO.getId() != null) {
+            this.removeById(productSkuDO.getId());
+        }
+
+        if (productSkuDO.getSpuId() != null) {
+            this.remove(new UpdateWrapper<ProductSkuDO>().eq("spu_id", productSkuDO.getSpuId()));
+        }
+    }
 }

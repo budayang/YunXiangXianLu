@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.yunxiangxianlu.biz.ProductInfoBiz;
@@ -60,6 +61,14 @@ public class ProductInfoBizImpl implements ProductInfoBiz {
                 .status(req.getStatus())
                 .build();
         productSpuService.updateProductSpu(productSpuDO);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteProductSpu(SpuDeleteReq req) {
+        productSpuService.deleteProductSpu(req.getId());
+        productSpecificationService.deleteProductSpecification(ProductSpecificationDO.builder().spuId(req.getId()).build());
+        productSkuService.deleteProductSku(ProductSkuDO.builder().spuId(req.getId()).build());
     }
 
     @Override

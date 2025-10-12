@@ -33,4 +33,14 @@ public class ProductSpecificationServiceImpl extends ServiceImpl<ProductSpecific
         }
         this.update(updateWrapper);
     }
+
+    @Override
+    public void deleteProductSpecification(ProductSpecificationDO productSpecificationDO) {
+        if (productSpecificationDO.getId() != null) {
+            this.removeById(productSpecificationDO.getId());
+        }
+        if (productSpecificationDO.getSpuId() != null) {
+            this.remove(new UpdateWrapper<ProductSpecificationDO>().eq("spu_id", productSpecificationDO.getSpuId()));
+        }
+    }
 }

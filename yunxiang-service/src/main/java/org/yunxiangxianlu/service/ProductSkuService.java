@@ -9,4 +9,6 @@ public interface ProductSkuService {
     void addProductSku(List<ProductSkuDO> productSkuDOs);
 
     void updateProductSku(ProductSkuDO productSkuDO);
+
+    void deleteProductSku(ProductSkuDO productSkuDO);
 }

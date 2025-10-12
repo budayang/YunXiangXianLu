@@ -41,6 +41,11 @@ public class ProductSpuServiceImpl extends ServiceImpl<ProductSpuDAO, ProductSpu
     }
 
     @Override
+    public void deleteProductSpu(Long id) {
+        this.removeById(id);
+    }
+
+    @Override
     public IPage<ProductSpuDO> listProductSpu(Page<ProductSpuDO> page, QueryWrapper<ProductSpuDO> queryWrapper) {
         // 执行分页查询
         return this.page(page, queryWrapper);

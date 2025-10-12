@@ -10,6 +10,8 @@ public interface ProductInfoBiz {
 
     void updateProductSpu(SpuUpdateReq req);
 
+    void deleteProductSpu(SpuDeleteReq req);
+
     Page<SpuVO> pageSpu(SpuListReq req);
 
     void addProductSpecification(SpecificationAddReq  req);

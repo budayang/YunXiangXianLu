@@ -11,5 +11,7 @@ public interface ProductSpuService {
 
     void updateProductSpu(ProductSpuDO productSpuDO);
 
+    void deleteProductSpu(Long id);
+
     IPage<ProductSpuDO> listProductSpu(Page<ProductSpuDO> page, QueryWrapper<ProductSpuDO> queryWrapper);
 }
