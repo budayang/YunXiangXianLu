@@ -1,5 +1,6 @@
 package org.yunxiangxianlu.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import org.yunxiangxianlu.dal.entity.ProductCategoryDO;
 import org.yunxiangxianlu.service.ProductCategoryService;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ProductCategoryServiceImpl extends ServiceImpl<ProductCategoryDAO, ProductCategoryDO> implements ProductCategoryService {
@@ -44,5 +46,12 @@ public class ProductCategoryServiceImpl extends ServiceImpl<ProductCategoryDAO, 
     @Override
     public void deleteProductCategory(Long id) {
         this.removeById(id);
+    }
+
+    @Override
+    public List<ProductCategoryDO> listProductCategory(Set<Long> ids) {
+        QueryWrapper<ProductCategoryDO> queryWrapper = new QueryWrapper<>();
+        queryWrapper.in("id", ids);
+        return this.list(queryWrapper);
     }
 }

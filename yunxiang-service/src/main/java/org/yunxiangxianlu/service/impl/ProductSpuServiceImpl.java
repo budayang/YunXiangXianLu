@@ -1,6 +1,9 @@
 package org.yunxiangxianlu.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -35,5 +38,11 @@ public class ProductSpuServiceImpl extends ServiceImpl<ProductSpuDAO, ProductSpu
             updateWrapper.set("status", productSpuDO.getStatus());
         }
         this.update(updateWrapper);
+    }
+
+    @Override
+    public IPage<ProductSpuDO> listProductSpu(Page<ProductSpuDO> page, QueryWrapper<ProductSpuDO> queryWrapper) {
+        // 执行分页查询
+        return this.page(page, queryWrapper);
     }
 }

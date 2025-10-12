@@ -1,4 +1,4 @@
-package org.yunxiangxianlu.common.dto.res;
+package org.yunxiangxianlu.common.dto.res.productCategory;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -8,7 +8,7 @@ import org.yunxiangxianlu.biz.ProductCategoryBiz;
 import org.yunxiangxianlu.common.dto.req.productCategory.ProductCategoryAddReqDTO;
 import org.yunxiangxianlu.common.dto.req.productCategory.ProductCategoryDeleteReqDTO;
 import org.yunxiangxianlu.common.dto.req.productCategory.ProductCategoryUpdateReqDTO;
-import org.yunxiangxianlu.common.dto.res.ProductCategoryVO;
+import org.yunxiangxianlu.common.dto.res.productCategory.ProductCategoryVO;
 import org.yunxiangxianlu.common.dto.res.Result;
 
 import javax.validation.Valid;
