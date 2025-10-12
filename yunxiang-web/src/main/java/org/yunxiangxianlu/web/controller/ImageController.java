@@ -1,6 +1,10 @@
 package org.yunxiangxianlu.web.controller;
 
 
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -64,14 +68,32 @@ public class ImageController {
         }
     }
 
-    // 提供图片访问接口（虽然通过静态资源配置已可访问，但保留此接口作为备用）
-    @GetMapping("/images/{filename:.+}")
-    @ResponseBody
-    public Result<byte[]> getImage(@PathVariable String filename) throws IOException {
-        Path imagePath = Paths.get(UPLOAD_DIR + filename);
-        if (!Files.exists(imagePath)) {
-            throw new RuntimeException("图片不存在");
+//    // 提供图片访问接口（虽然通过静态资源配置已可访问，但保留此接口作为备用）
+//    @GetMapping("/images/{filename:.+}")
+//    @ResponseBody
+//    public Result<byte[]> getImage(@PathVariable String filename) throws IOException {
+//        Path imagePath = Paths.get(UPLOAD_DIR + filename);
+//        if (!Files.exists(imagePath)) {
+//            throw new RuntimeException("图片不存在");
+//        }
+//        return Result.success(Files.readAllBytes(imagePath));
+//    }
+
+    @GetMapping("/images/{filename}")
+    public ResponseEntity<Resource> getImage(@PathVariable String filename) {
+        try {
+            Path filePath = Paths.get("./uploads/", filename).toAbsolutePath().normalize();
+            Resource resource = new UrlResource(filePath.toUri());
+
+            if (resource.exists()) {
+                return ResponseEntity.ok()
+                        .contentType(MediaType.IMAGE_PNG) // 可根据文件类型动态判断
+                        .body(resource);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(500).build();
         }
-        return Result.success(Files.readAllBytes(imagePath));
     }
 }
