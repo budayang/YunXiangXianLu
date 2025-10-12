@@ -19,6 +19,12 @@ public enum ErrorCode {
     USERNAME_OR_PASSWORD_ERROR("20005", "用户名或密码错误"),
     USER_DISABLED("20006", "用户已禁用"),
     INVALID_REFRESH_TOKEN("20007", "无效的刷新令牌"),
+    // 请选择要上传的文件
+    FILE_NOT_SELECTED("30001", "请选择要上传的文件"),
+    // 只支持图片文件上传
+    FILE_TYPE_NOT_SUPPORTED("30002", "只支持图片文件上传"),
+    // 图片上传失败
+    FILE_UPLOAD_FAILED("30003", "图片上传失败"),
     ;
 
     private final String code;

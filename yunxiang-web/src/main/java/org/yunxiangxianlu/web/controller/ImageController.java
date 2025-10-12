@@ -1,10 +1,11 @@
 package org.yunxiangxianlu.web.controller;
 
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.yunxiangxianlu.common.dto.res.Result;
+import org.yunxiangxianlu.common.exception.BusinessException;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,6 +14,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import static org.yunxiangxianlu.common.exception.ErrorCode.*;
 
 @RequestMapping("/image")
 @RestController
@@ -30,16 +33,16 @@ public class ImageController {
 
     @PostMapping("/upload")
     @ResponseBody
-    public ResponseEntity<String> uploadImage(@RequestParam("file") MultipartFile file) {
+    public Result<String> uploadImage(@RequestParam("file") MultipartFile file) {
         if (file.isEmpty()) {
-            return ResponseEntity.badRequest().body("请选择一个图片文件");
+            throw new BusinessException(FILE_NOT_SELECTED);
         }
 
         try {
             // 检查文件类型
             String contentType = file.getContentType();
             if (contentType == null || !contentType.startsWith("image/")) {
-                return ResponseEntity.badRequest().body("只支持图片文件上传");
+                throw new BusinessException(FILE_TYPE_NOT_SUPPORTED);
             }
 
             // 生成唯一文件名，避免冲突
@@ -53,22 +56,22 @@ public class ImageController {
 
             // 返回访问URL
             String imageUrl = "/images/" + newFilename;
-            return ResponseEntity.ok("图片上传成功，访问地址: " + imageUrl);
+            return Result.success(imageUrl);
 
         } catch (IOException e) {
             e.printStackTrace();
-            return ResponseEntity.status(500).body("上传失败: " + e.getMessage());
+            return Result.error(FILE_UPLOAD_FAILED, e.getMessage());
         }
     }
 
     // 提供图片访问接口（虽然通过静态资源配置已可访问，但保留此接口作为备用）
     @GetMapping("/images/{filename:.+}")
     @ResponseBody
-    public byte[] getImage(@PathVariable String filename) throws IOException {
+    public Result<byte[]> getImage(@PathVariable String filename) throws IOException {
         Path imagePath = Paths.get(UPLOAD_DIR + filename);
         if (!Files.exists(imagePath)) {
             throw new RuntimeException("图片不存在");
         }
-        return Files.readAllBytes(imagePath);
+        return Result.success(Files.readAllBytes(imagePath));
     }
 }
