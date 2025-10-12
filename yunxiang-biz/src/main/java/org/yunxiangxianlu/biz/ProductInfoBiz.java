@@ -18,7 +18,11 @@ public interface ProductInfoBiz {
 
     void updateProductSpecification(SpecificationUpdateReq req);
 
+    void deleteProductSpecification(SpecificationDeleteReq req);
+
     void addProductSku(SkuAddReq req);
 
     void updateProductSku(SkuUpdateReq req);
+
+    void deleteProductSku(SkuDeleteReq req);
 }

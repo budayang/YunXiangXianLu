@@ -57,7 +57,8 @@ public class ProductInfoController {
     }
 
     @PostMapping("/product-specification/delete")
-    public Result<Void> deleteProductSpecification() {
+    public Result<Void> deleteProductSpecification(@RequestBody @Valid SpecificationDeleteReq req) {
+        productInfoBiz.deleteProductSpecification(req);
         return Result.success();
     }
 
@@ -79,7 +80,8 @@ public class ProductInfoController {
     }
 
     @PostMapping("/product-sku/delete")
-    public Result<Void> deleteProductSku() {
+    public Result<Void> deleteProductSku(@RequestBody @Valid SkuDeleteReq req) {
+        productInfoBiz.deleteProductSku(req);
         return Result.success();
     }
 

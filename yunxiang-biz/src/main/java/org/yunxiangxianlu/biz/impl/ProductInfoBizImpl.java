@@ -138,6 +138,11 @@ public class ProductInfoBizImpl implements ProductInfoBiz {
     }
 
     @Override
+    public void deleteProductSpecification(SpecificationDeleteReq req) {
+        productSpecificationService.deleteProductSpecification(ProductSpecificationDO.builder().id(req.getId()).build());
+    }
+
+    @Override
     public void addProductSku(SkuAddReq req) {
         List<ProductSkuDO> productSkuDOList = new ArrayList<>();
         for (SkuAddReq.SkuInfo skuInfo : req.getSkuInfoList()) {
@@ -173,5 +178,10 @@ public class ProductInfoBizImpl implements ProductInfoBiz {
                 .status(req.getStatus())
                 .build();
         productSkuService.updateProductSku(productSkuDO);
+    }
+
+    @Override
+    public void deleteProductSku(SkuDeleteReq req) {
+        productSkuService.deleteProductSku(ProductSkuDO.builder().id(req.getId()).build());
     }
 }
