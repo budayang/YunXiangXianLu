@@ -25,6 +25,11 @@ public class SpuVO {
     /**
      * 分类ID
      */
+    private Long categoryId;
+
+    /**
+     * 分类名称
+     */
     private String categoryName;
 
     /**

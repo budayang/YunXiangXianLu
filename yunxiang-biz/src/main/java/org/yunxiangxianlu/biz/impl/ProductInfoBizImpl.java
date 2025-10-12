@@ -95,6 +95,7 @@ public class ProductInfoBizImpl implements ProductInfoBiz {
                 SpuVO spuVO = SpuVO.builder()
                         .id(record.getId())
                         .name(record.getName())
+                        .categoryId(record.getCategoryId())
                         .categoryName(categoryNameMap.get(record.getCategoryId()))
                         .brand(record.getBrand())
                         .description(record.getDescription())
