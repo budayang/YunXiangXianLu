@@ -43,4 +43,9 @@ public class ProductSpecificationServiceImpl extends ServiceImpl<ProductSpecific
             this.remove(new UpdateWrapper<ProductSpecificationDO>().eq("spu_id", productSpecificationDO.getSpuId()));
         }
     }
+
+    @Override
+    public List<ProductSpecificationDO> listProductSpecification(ProductSpecificationDO productSpecificationDO) {
+        return this.list(new UpdateWrapper<ProductSpecificationDO>().eq("spu_id", productSpecificationDO.getSpuId()));
+    }
 }

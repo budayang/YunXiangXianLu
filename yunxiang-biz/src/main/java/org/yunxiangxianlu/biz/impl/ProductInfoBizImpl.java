@@ -10,6 +10,8 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.yunxiangxianlu.biz.ProductInfoBiz;
 import org.yunxiangxianlu.common.dto.req.productInfo.*;
+import org.yunxiangxianlu.common.dto.res.productInfo.SkuVO;
+import org.yunxiangxianlu.common.dto.res.productInfo.SpecificationVO;
 import org.yunxiangxianlu.common.dto.res.productInfo.SpuVO;
 import org.yunxiangxianlu.dal.entity.ProductCategoryDO;
 import org.yunxiangxianlu.dal.entity.ProductSkuDO;
@@ -144,6 +146,27 @@ public class ProductInfoBizImpl implements ProductInfoBiz {
     }
 
     @Override
+    public List<SpecificationVO> listProductSpecification(SpecificationListReq req) {
+        List<ProductSpecificationDO> productSpecificationDOList
+                = productSpecificationService.listProductSpecification(ProductSpecificationDO.builder().spuId(req.getSpuId()).build());
+        if (CollectionUtils.isEmpty(productSpecificationDOList)) {
+            return new ArrayList<>();
+        }
+        List<SpecificationVO> specificationVOList = new ArrayList<>();
+        for (ProductSpecificationDO record : productSpecificationDOList) {
+            SpecificationVO specificationVO = SpecificationVO.builder()
+                    .id(record.getId())
+                    .spuId(record.getSpuId())
+                    .specName(record.getSpecName())
+                    .specValue(record.getSpecValue())
+                    .sortOrder(record.getSortOrder())
+                    .build();
+            specificationVOList.add(specificationVO);
+        }
+        return specificationVOList;
+    }
+
+    @Override
     public void addProductSku(SkuAddReq req) {
         List<ProductSkuDO> productSkuDOList = new ArrayList<>();
         for (SkuAddReq.SkuInfo skuInfo : req.getSkuInfoList()) {
@@ -184,5 +207,30 @@ public class ProductInfoBizImpl implements ProductInfoBiz {
     @Override
     public void deleteProductSku(SkuDeleteReq req) {
         productSkuService.deleteProductSku(ProductSkuDO.builder().id(req.getId()).build());
+    }
+
+    @Override
+    public List<SkuVO> listProductSku(SkuListReq req) {
+        List<ProductSkuDO> productSkuDOList = productSkuService.listProductSku(ProductSkuDO.builder().spuId(req.getSpuId()).build());
+        if (CollectionUtils.isEmpty(productSkuDOList)) {
+            return new ArrayList<>();
+        }
+        List<SkuVO> skuVOList = new ArrayList<>();
+        for (ProductSkuDO record : productSkuDOList) {
+            SkuVO skuVO = SkuVO.builder()
+                    .id(record.getId())
+                    .spuId(record.getSpuId())
+                    .skuCode(record.getSkuCode())
+                    .specifications(record.getSpecifications())
+                    .price(record.getPrice())
+                    .costPrice(record.getCostPrice())
+                    .stock(record.getStock())
+                    .weight(record.getWeight())
+                    .imageUrl(record.getImageUrl())
+                    .status(record.getStatus())
+                    .build();
+            skuVOList.add(skuVO);
+        }
+        return skuVOList;
     }
 }

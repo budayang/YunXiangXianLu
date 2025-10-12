@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.yunxiangxianlu.biz.ProductInfoBiz;
 import org.yunxiangxianlu.common.dto.req.productInfo.*;
 import org.yunxiangxianlu.common.dto.res.Result;
+import org.yunxiangxianlu.common.dto.res.productInfo.SkuVO;
+import org.yunxiangxianlu.common.dto.res.productInfo.SpecificationVO;
 import org.yunxiangxianlu.common.dto.res.productInfo.SpuVO;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RequestMapping("/product-info")
 @RestController
@@ -63,8 +66,8 @@ public class ProductInfoController {
     }
 
     @PostMapping("/product-specification/list")
-    public Result<Void> listProductSpecification() {
-        return Result.success();
+    public Result<List<SpecificationVO>> listProductSpecification(@RequestBody @Valid SpecificationListReq  req) {
+        return Result.success(productInfoBiz.listProductSpecification(req));
     }
 
     @PostMapping("/product-sku/add")
@@ -86,7 +89,7 @@ public class ProductInfoController {
     }
 
     @PostMapping("/product-sku/list")
-    public Result<Void> listProductSku() {
-        return Result.success();
+    public Result<List<SkuVO>> listProductSku(@RequestBody @Valid SkuListReq req) {
+        return Result.success(productInfoBiz.listProductSku(req));
     }
 }

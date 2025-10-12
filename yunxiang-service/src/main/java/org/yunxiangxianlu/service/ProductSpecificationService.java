@@ -11,4 +11,6 @@ public interface ProductSpecificationService {
     void  updateProductSpecification(ProductSpecificationDO productSpecificationDO);
 
     void deleteProductSpecification(ProductSpecificationDO productSpecificationDO);
+
+    List<ProductSpecificationDO> listProductSpecification(ProductSpecificationDO productSpecificationDO);
 }
