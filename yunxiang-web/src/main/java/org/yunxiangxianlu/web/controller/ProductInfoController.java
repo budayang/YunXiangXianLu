@@ -20,69 +20,69 @@ public class ProductInfoController {
     @Autowired
     private ProductInfoBiz productInfoBiz;
 
-    @PostMapping("/add-product-spu")
+    @PostMapping("/product-spu/add")
     public Result<Void> addProductSpu(@RequestBody @Valid SpuAddReq req) {
         productInfoBiz.addProductSpu(req);
         return Result.success();
     }
 
-    @PostMapping("/update-product-spu")
+    @PostMapping("/product-spu/update")
     public Result<Void> updateProductSpu(@RequestBody @Valid SpuUpdateReq req) {
         productInfoBiz.updateProductSpu(req);
         return Result.success();
     }
 
-    @PostMapping("/delete-product-spu")
+    @PostMapping("/product-spu/delete")
     public Result<Void> deleteProductSpu() {
         return Result.success();
     }
 
-    @PostMapping("/list-product-spu")
+    @PostMapping("/product-spu/list")
     public Result<Page<SpuVO>> listProductSpu(@RequestBody @Valid SpuListReq req) {
         Page<SpuVO> page = productInfoBiz.pageSpu(req);
         return Result.success(page);
     }
 
-    @PostMapping("/add-product-specification")
+    @PostMapping("/product-specification/add")
     public Result<Void> addProductSpecification(@RequestBody @Valid SpecificationAddReq req) {
         productInfoBiz.addProductSpecification(req);
         return Result.success();
     }
 
-    @PostMapping("/update-product-specification")
+    @PostMapping("/product-specification/update")
     public Result<Void> updateProductSpecification(@RequestBody @Valid SpecificationUpdateReq req) {
         productInfoBiz.updateProductSpecification(req);
         return Result.success();
     }
 
-    @PostMapping("/delete-product-specification")
+    @PostMapping("/product-specification/delete")
     public Result<Void> deleteProductSpecification() {
         return Result.success();
     }
 
-    @PostMapping("/list-product-specification")
+    @PostMapping("/product-specification/list")
     public Result<Void> listProductSpecification() {
         return Result.success();
     }
 
-    @PostMapping("/add-product-sku")
+    @PostMapping("/product-sku/add")
     public Result<Void> addProductSku(@RequestBody @Valid SkuAddReq req) {
         productInfoBiz.addProductSku(req);
         return Result.success();
     }
 
-    @PostMapping("/update-product-sku")
+    @PostMapping("/product-sku/update")
     public Result<Void> updateProductSku(@RequestBody @Valid SkuUpdateReq req) {
         productInfoBiz.updateProductSku(req);
         return Result.success();
     }
 
-    @PostMapping("/delete-product-sku")
+    @PostMapping("/product-sku/delete")
     public Result<Void> deleteProductSku() {
         return Result.success();
     }
 
-    @PostMapping("/list-product-sku")
+    @PostMapping("/product-sku/list")
     public Result<Void> listProductSku() {
         return Result.success();
     }
