@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class SpecificationAddReq {
     /**
      * 规格信息
      */
-    @NotNull(message = "规格信息不能为空")
+    @NotEmpty(message = "规格信息不能为空")
     private List<SpecificationInfo> specificationInfoList;
 
 

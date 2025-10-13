@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.List;
@@ -25,7 +26,7 @@ public class SkuAddReq {
     /**
      * sku信息
      */
-    @NotNull(message = "sku信息不能为空")
+    @NotEmpty(message = "sku信息不能为空")
     List<SkuInfo> skuInfoList;
 
     @Data
@@ -37,7 +38,7 @@ public class SkuAddReq {
         /**
          * 规格
          */
-        @NotNull(message = "规格不能为空")
+        @NotEmpty(message = "规格不能为空")
         private List<SpecificationUpdateReq> specificationList;
 
         /**
