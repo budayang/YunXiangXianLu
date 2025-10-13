@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @Builder
@@ -49,4 +50,9 @@ public class SkuUpdateReq {
      * 状态：1-可售，0-缺货/停售
      */
     private Integer status;
+
+    /**
+     * 规格
+     */
+    private List<SpecificationUpdateReq> specificationList;
 }
