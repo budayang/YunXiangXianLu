@@ -37,6 +37,9 @@ public class ProductSpuServiceImpl extends ServiceImpl<ProductSpuDAO, ProductSpu
         if (productSpuDO.getStatus() != null) {
             updateWrapper.set("status", productSpuDO.getStatus());
         }
+        if (StringUtils.hasText(productSpuDO.getImageUrl())) {
+            updateWrapper.set("image_url", productSpuDO.getImageUrl());
+        }
         this.update(updateWrapper);
     }
 

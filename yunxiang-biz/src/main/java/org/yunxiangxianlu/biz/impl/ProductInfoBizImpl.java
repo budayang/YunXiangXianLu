@@ -62,6 +62,7 @@ public class ProductInfoBizImpl implements ProductInfoBiz {
                 .brand(req.getBrand())
                 .description(req.getDescription())
                 .status(req.getStatus())
+                .imageUrl(req.getImageUrl())
                 .build();
         productSpuService.updateProductSpu(productSpuDO);
     }

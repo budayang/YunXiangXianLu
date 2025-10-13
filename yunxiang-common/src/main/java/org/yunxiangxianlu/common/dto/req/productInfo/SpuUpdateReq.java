@@ -44,4 +44,9 @@ public class SpuUpdateReq {
      * 状态：1-上架，0-下架
      */
     private Integer status;
+
+    /**
+     * imageUrl
+     */
+    private String imageUrl;
 }
