@@ -103,6 +103,7 @@ public class ProductInfoBizImpl implements ProductInfoBiz {
                         .brand(record.getBrand())
                         .description(record.getDescription())
                         .status(record.getStatus())
+                        .imageUrl(record.getImageUrl())
                         .build();
                 spuVOList.add(spuVO);
             }

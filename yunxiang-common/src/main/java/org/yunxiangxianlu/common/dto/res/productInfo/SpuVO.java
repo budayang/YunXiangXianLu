@@ -46,4 +46,9 @@ public class SpuVO {
      * 状态：1-上架，0-下架
      */
     private Integer status;
+
+    /**
+     * 图片url
+     */
+    private String imageUrl;
 }

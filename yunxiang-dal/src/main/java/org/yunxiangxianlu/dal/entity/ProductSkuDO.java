@@ -1,12 +1,14 @@
 package org.yunxiangxianlu.dal.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.yunxiangxianlu.dal.handler.MapJsonTypeHandler;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -42,6 +44,7 @@ public class ProductSkuDO implements Serializable {
      * 规格组合（JSON格式，如：{"容量":"50ml","瓶数":"12瓶","包装":"3盒装"}）
      * 在Java中通常用 Map<String, String> 表示
      */
+    @TableField(typeHandler = MapJsonTypeHandler.class)
     private Map<String, String> specifications;
 
     /**
