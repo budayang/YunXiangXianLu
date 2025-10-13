@@ -43,4 +43,9 @@ public class SpuAddReq {
      */
     @NotNull(message = "状态不能为空")
     private Integer status;
+
+    /**
+     * 图片 URL
+     */
+    private String imageUrl;
 }

@@ -56,6 +56,11 @@ public class ProductSpuDO implements Serializable {
     private Integer status;
 
     /**
+     * 图片url
+     */
+    private String imageUrl;
+
+    /**
      * 创建时间
      */
     private LocalDateTime created;
