@@ -34,7 +34,7 @@ public class SkuVO {
      * 规格组合（JSON格式，如：{"容量":"50ml","瓶数":"12瓶","包装":"3盒装"}）
      * 在Java中通常用 Map<String, String> 表示
      */
-    private List<SpecificationVO> specifications;
+    private List<SpecificationVO> specificationList;
 
     /**
      * 销售价格（元）

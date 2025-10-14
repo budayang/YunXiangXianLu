@@ -201,6 +201,9 @@ public class ProductInfoBizImpl implements ProductInfoBiz {
                 .imageUrl(req.getImageUrl())
                 .status(req.getStatus())
                 .build();
+        if (!CollectionUtils.isEmpty(req.getSpecificationList())) {
+            productSkuDO.setSpecifications(JSON.toJSONString(req.getSpecificationList()));
+        }
         productSkuService.updateProductSku(productSkuDO);
     }
 
@@ -221,7 +224,7 @@ public class ProductInfoBizImpl implements ProductInfoBiz {
                     .id(record.getId())
                     .spuId(record.getSpuId())
                     .skuCode(record.getSkuCode())
-                    .specifications(JSON.parseArray(record.getSpecifications(), SpecificationVO.class))
+                    .specificationList(JSON.parseArray(record.getSpecifications(), SpecificationVO.class))
                     .price(record.getPrice())
                     .costPrice(record.getCostPrice())
                     .stock(record.getStock())
