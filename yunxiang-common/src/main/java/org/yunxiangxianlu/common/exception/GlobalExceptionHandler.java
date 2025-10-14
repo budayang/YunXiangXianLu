@@ -72,8 +72,8 @@ public class GlobalExceptionHandler {
         MDC.remove("traceId");
         return Result.error(
                 ErrorCode.SYSTEM_ERROR,
-                message,
-                traceId
+                traceId,
+                message
         );
     }
 }

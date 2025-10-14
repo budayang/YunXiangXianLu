@@ -1,6 +1,9 @@
 package org.yunxiangxianlu.web.controller;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.MediaType;
@@ -26,6 +29,7 @@ import static org.yunxiangxianlu.common.exception.ErrorCode.*;
 public class ImageController {
 
     private static final String UPLOAD_DIR = "uploads/";
+    private static final Logger log = LoggerFactory.getLogger(ImageController.class);
 
     // 创建上传目录
     static {
@@ -63,8 +67,8 @@ public class ImageController {
             return Result.success(imageUrl);
 
         } catch (IOException e) {
-            e.printStackTrace();
-            return Result.error(FILE_UPLOAD_FAILED, e.getMessage());
+            log.error("文件上传失败: " + e.getMessage(), e);
+            return Result.error(FILE_UPLOAD_FAILED, MDC.get("traceId"));
         }
     }
 
