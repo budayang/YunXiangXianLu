@@ -1,5 +1,6 @@
 package org.yunxiangxianlu.biz.impl;
 
+import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -173,14 +174,10 @@ public class ProductInfoBizImpl implements ProductInfoBiz {
     public void addProductSku(SkuAddReq req) {
         List<ProductSkuDO> productSkuDOList = new ArrayList<>();
         for (SkuAddReq.SkuInfo skuInfo : req.getSkuInfoList()) {
-            Map<String, String> map = new HashMap<>();
-            for (SpecificationUpdateReq specificationInfo : skuInfo.getSpecificationList()) {
-                map.put(specificationInfo.getSpecName(), specificationInfo.getSpecValue());
-            }
             ProductSkuDO productSkuDO = ProductSkuDO.builder()
                     .spuId(req.getSpuId())
                     .skuCode(UUID.randomUUID().toString())
-                    .specifications(map)
+                    .specifications(JSON.toJSONString(skuInfo.getSpecificationList()))
                     .price(skuInfo.getPrice())
                     .costPrice(skuInfo.getCostPrice())
                     .stock(skuInfo.getStock())
@@ -224,7 +221,7 @@ public class ProductInfoBizImpl implements ProductInfoBiz {
                     .id(record.getId())
                     .spuId(record.getSpuId())
                     .skuCode(record.getSkuCode())
-                    .specifications(record.getSpecifications())
+                    .specifications(JSON.parseArray(record.getSpecifications(), SpecificationVO.class))
                     .price(record.getPrice())
                     .costPrice(record.getCostPrice())
                     .stock(record.getStock())
