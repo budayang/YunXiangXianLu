@@ -3,7 +3,7 @@ package org.yunxiangxianlu.service.impl;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 import org.yunxiangxianlu.dal.dao.ProductSkuDAO;
 import org.yunxiangxianlu.dal.entity.ProductSkuDO;
 import org.yunxiangxianlu.service.ProductSkuService;
@@ -21,7 +21,7 @@ public class ProductSkuServiceImp extends ServiceImpl<ProductSkuDAO, ProductSkuD
     public void updateProductSku(ProductSkuDO productSkuDO) {
         UpdateWrapper<ProductSkuDO> updateWrapper = new UpdateWrapper<>();
         updateWrapper.eq("id", productSkuDO.getId());
-        if (CollectionUtils.isEmpty(productSkuDO.getSpecifications())) {
+        if (StringUtils.hasText(productSkuDO.getSpecifications())) {
             updateWrapper.set("specifications", productSkuDO.getSpecifications());
         }
         if (productSkuDO.getPrice() != null) {
