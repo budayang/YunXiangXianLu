@@ -85,6 +85,9 @@ public class ProductInfoBizImpl implements ProductInfoBiz {
         if (StringUtils.hasText(req.getName())) {
             queryWrapper.like("name", req.getName());
         }
+        if (req.getCategoryId() != null) {
+            queryWrapper.eq("category_id", req.getCategoryId());
+        }
         // 执行分页查询
         IPage<ProductSpuDO> userPage = productSpuService.listProductSpu(page, queryWrapper);
         Page<SpuVO> resultPage = new Page<>();

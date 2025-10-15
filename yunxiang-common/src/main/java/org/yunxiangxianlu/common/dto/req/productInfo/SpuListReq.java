@@ -12,4 +12,9 @@ public class SpuListReq extends PageReq {
      * 产品名称
      */
     private String name;
+
+    /**
+     * 产品分类id
+     */
+    private Long categoryId;
 }
