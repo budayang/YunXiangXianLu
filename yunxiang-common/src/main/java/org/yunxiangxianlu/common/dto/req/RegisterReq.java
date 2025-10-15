@@ -15,4 +15,14 @@ public class RegisterReq {
      */
     private String password;
 
+    /**
+     * 手机号
+     */
+    private String phone;
+
+    /**
+     * 头像
+     */
+    private String avatar;
+
 }

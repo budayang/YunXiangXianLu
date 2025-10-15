@@ -39,6 +39,11 @@ public class UserDO {
     private String phone;
 
     /**
+     * 头像
+     */
+    private String avatar;
+
+    /**
      * 状态
      */
     private Integer status;

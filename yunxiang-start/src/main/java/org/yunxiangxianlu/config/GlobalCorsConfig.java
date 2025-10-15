@@ -28,6 +28,7 @@ public class GlobalCorsConfig {
                 "http://47.99.95.14:5173",
                 "http://localhost:5173",
                 "http://47.99.95.14/",
+                "http://localhost/",
                 "https://your-production-domain.com"  // 生产环境域名
         ));
 

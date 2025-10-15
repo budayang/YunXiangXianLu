@@ -19,10 +19,12 @@ public class UserBizImpl implements UserBiz {
     }
 
     @Override
-    public void save(String username, String password) {
+    public void save(String username, String password, String phone, String avatar) {
         UserDO userDO = UserDO.builder()
                 .username(username)
                 .password(password)
+                .phone(phone)
+                .avatar(avatar)
                 .status(0)
                 .creater(1L)
                 .updater(1L)

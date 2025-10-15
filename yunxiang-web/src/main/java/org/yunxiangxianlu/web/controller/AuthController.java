@@ -44,7 +44,7 @@ public class AuthController {
         // 密码加密
         req.setPassword(passwordEncoder.encode(req.getPassword()));
         // 保存用户
-        userBiz.save(req.getUsername(), req.getPassword());
+        userBiz.save(req.getUsername(), req.getPassword(),req.getPhone(), req.getAvatar());
         return Result.success("注册成功");
     }
 
@@ -81,6 +81,7 @@ public class AuthController {
         tokens.put("accessToken", accessToken);
         tokens.put("refreshToken", refreshToken);
         tokens.put("username", username);
+        tokens.put("avatar", user.getAvatar());
 
         return Result.success(tokens);
     }
